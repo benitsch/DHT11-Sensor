@@ -48,14 +48,14 @@ def main():
 
 				values = (temperature, humidity)
 				insert_values(conn, values)
-				
+
 				# At night, it is not necessary to check the temperature & humidity each 30 sec.
 				if nowTime >= t(23,30) or nowTime <= t(5,00):
 					time.sleep(60)
 				else:
 					time.sleep(30)
 			except RuntimeError as e:
-				insert_error(str(e))
+				insert_error(conn, str(e))
 
 if __name__ == '__main__':
 	main()
