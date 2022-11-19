@@ -25,7 +25,7 @@ def insert_error(conn, value):
 	conn.commit()
 
 def main():
-	database = r"/home/admin/Projects/weather-station/weather.db"
+	database = r"/home/admin/Projects/sensor-station/weather.db"
 
 	conn = create_db_connection(database)
 	if conn != None:
@@ -55,7 +55,10 @@ def main():
 				else:
 					time.sleep(30)
 			except RuntimeError as e:
-				insert_error(conn, str(e))
+				pass
+				# Does not work to insert error into database
+				# error_msg = (str(e))
+				# insert_error(conn, error_msg)
 
 if __name__ == '__main__':
 	main()
