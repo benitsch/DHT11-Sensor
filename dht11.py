@@ -1,4 +1,4 @@
-import time, os, time, adafruit_dht
+import time, os, time, board, adafruit_dht
 import sqlite3
 from sqlite3 import Error
 from datetime import datetime, time as t
@@ -29,7 +29,7 @@ def main():
 
 	conn = create_db_connection(database)
 	if conn != None:
-		dht_device = adafruit_dht.DHT22(4)
+		dht_device = adafruit_dht.DHT22(board.D4)
 		nowTime = datetime.now().time()
 
 		while True:
